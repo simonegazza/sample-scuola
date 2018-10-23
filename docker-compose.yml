@@ -1,0 +1,41 @@
+data:
+  image: busybox
+  volumes:
+    - ./src:/var/www/sos
+
+nginx:
+  image: nginx:1-alpine
+  links:
+    - php
+  volumes_from:
+    - data
+  volumes:
+    - ./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+  ports:
+    - "80:80"
+
+php:
+  image: php:7.3-rc-fpm #-fpm-alpine
+  working_dir: /var/www/sos
+# INFO: TO CONFIGURE CUSTOM PHP.INI
+#  volumes:       
+#    - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini:ro
+  links:
+    - mysql
+
+mysql:
+  image: mysql:8.0.12
+  environment:
+    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    MYSQL_DATABASE: ${MYSQL_DATABASE}
+    MYSQL_USER: ${MYSQL_USER}
+    MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  ports:
+    - "3306:3306"
+  # TODO: TO CREATE A CONTAINER ALREADY LOADED WITH A SQL DUMP https://stackoverflow.com/a/33397185/641321
+
+# redis:
+#   image: redis:5.0.0-alpine
+
+# localstack:
+#   image: localstack:latest
