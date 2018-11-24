@@ -14,6 +14,7 @@ services:
     - ./logs:/var/log/nginx
     depends_on:
     - db
+    - cache
 
   db:
     image: mysql:5.7
@@ -24,3 +25,8 @@ services:
     volumes:
     - ./mysql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
     tty: true
+
+  cache:
+    image: memcached
+    ports:
+    - 11211:11211

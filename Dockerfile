@@ -13,7 +13,10 @@ apt-get install -y php7.2 nginx php7.2-fpm php7.2-mysql php7.2-json php7.2-opcac
                    php7.2-curl php7.2-zip libbz2-dev libjpeg-dev libldap2-dev libmemcached-dev libpng-dev libpq-dev php7.2-xml composer mysql-client && \
 composer global require joomlatools/console --no-interaction && \
 ~/.composer/vendor/bin/joomla site:download --www=/var/www/html --release=3.9 sample-scuola && \
-~/.composer/vendor/bin/joomla site:install --www=/var/www/html --mysql-login=root:$MYSQL_ROOT_PASSWORD --mysql-host=db --mysql-database=joomla --skip-exists-check sample-scuola
+~/.composer/vendor/bin/joomla site:install --www=/var/www/html --mysql-login=root:$MYSQL_ROOT_PASSWORD --mysql-host=db --mysql-database=joomla --skip-exists-check sample-scuola && \
+sed -i -e "s/caching = '0'/caching = '2'/g" /var/www/html/sample-scuola/configuration.php && \
+sed -i -e "s/cache_handler = 'file'/cache_handler = 'memcache'/g" /var/www/html/sample-scuola/configuration.php && \
+sed -i -e "s/memcache_server_host = 'localhost'/memcache_server_host = 'cache'/g" /var/www/html/sample-scuola/configuration.php
 
 COPY nginx/default /etc/nginx/sites-available/default
 
