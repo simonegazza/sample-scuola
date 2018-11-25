@@ -27,6 +27,6 @@ services:
     tty: true
 
   cache:
-    image: memcached
+    image: bitnami/memcached
     ports:
     - 11211:11211
