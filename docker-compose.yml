@@ -30,3 +30,5 @@ services:
     image: bitnami/memcached
     ports:
     - 11211:11211
+    environment:
+    - MEMCACHED_CACHE_SIZE=${MEMCACHED_CACHE_SIZE}
