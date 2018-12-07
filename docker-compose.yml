@@ -21,6 +21,4 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    volumes:
-    - ./mysql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
     tty: true

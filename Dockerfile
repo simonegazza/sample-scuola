@@ -2,7 +2,12 @@ FROM debian:stretch
 
 ARG MYSQL_ROOT_PASSWORD
 
+ENV MYSQL_ROOT_PASSWORD $MYSQL_ROOT_PASSWORD
+
+COPY start.sh /home/start.sh
+
 RUN \
+chmod +x /home/start.sh && \
 apt-get update -y && \
 apt-get upgrade -y && \
 apt-get install -y ca-certificates apt-transport-https wget gnupg vim unzip && \
@@ -16,7 +21,8 @@ composer global require joomlatools/console --no-interaction && \
 ~/.composer/vendor/bin/joomla site:install --www=/var/www/html --mysql-login=root:$MYSQL_ROOT_PASSWORD --mysql-host=db --mysql-database=joomla --skip-exists-check sample-scuola
 
 COPY nginx/default /etc/nginx/sites-available/default
+COPY mysql/dump.sql /home/dump.sql
 
 EXPOSE 80
 
-CMD service php7.2-fpm start && service nginx start && /bin/bash
+CMD ["/home/start.sh"]
