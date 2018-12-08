@@ -19,9 +19,9 @@
 -- Current Database: `joomla`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `joomla` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `MYSQL_DB_NAME` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `joomla`;
+USE `MYSQL_DB_NAME`;
 
 --
 -- Table structure for table `j_action_log_config`
