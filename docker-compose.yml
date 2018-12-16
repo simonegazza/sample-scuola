@@ -9,6 +9,7 @@ services:
     tty: true
     volumes:
     - ./logs:/var/log/nginx
+#    - ./src:/home/components/helloworld
     depends_on:
     - db
     environment:
