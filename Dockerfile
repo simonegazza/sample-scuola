@@ -16,6 +16,8 @@ composer global require joomlatools/console --no-interaction
 
 COPY nginx/default /home/nginx
 
+COPY dev_package /home/dev
+
 EXPOSE 80
 
 CMD ["/home/start.sh"]

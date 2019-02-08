@@ -15,13 +15,34 @@ if ! [ -f "/var/www/html/$SITE_NAME/configuration.php" ]; then
   sed -i -e "s/SITE_NAME/$SITE_NAME/g" /etc/nginx/sites-available/default
 fi
 
+rm -rf /home/dev/packages
+mkdir /home/dev/packages
+rm -rf /home/dev/pkg_dev.xml
+cp /home/dev/pkg_dev.template.xml /home/dev/pkg_dev.xml
+
+packages=""
+
 for folder in /home/components/*; do
   component="$(basename -- ${folder})"
-  echo "$component"
-  ln -s "/home/components/$component" "/var/www/html/$SITE_NAME/tmp/$component"
+  echo "recognized $component component"
+  ln -s "/home/components/$component" "/home/dev/packages/com_$component"
+  packages+="\n\<file type=\"component\" id=\"com_${component}\"\>com_${component}\<\/file\>"
 done
-cd ~
 
+for folder in /home/templates/*; do
+  template="$(basename -- ${folder})"
+  echo "recognized $template template"
+  ln -s "/home/templates/$template" "/home/dev/packages/tpl_$template"
+  packages+="\n\<file type=\"template\" id=\"${template}\" client=\"site\"\>tpl_${template}\<\/file\>"
+done
+
+sed -i "/home/dev/pkg_dev.xml" -e "s/{packages}/${packages}/g" "/home/dev/pkg_dev.xml"
+
+ln -s "/home/dev" "/var/www/html/$SITE_NAME/tmp"
+
+chown -Rh www-data:www-data "/home/components"
+chown -Rh www-data:www-data "/home/dev"
+chown -Rh www-data:www-data "/home/templates"
 chown -Rh www-data:www-data "/var/www/html/$SITE_NAME"
 
 service php7.2-fpm start

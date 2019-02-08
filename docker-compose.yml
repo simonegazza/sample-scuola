@@ -9,7 +9,9 @@ services:
     tty: true
     volumes:
     - ./logs:/var/log/nginx
-    - ./src:/home/components/helloworld
+    - ./src/component:/home/components/helloworld
+    - ./src/template:/home/templates/joomlapure
+    - ./dev_package:/home/dev
     depends_on:
     - db
     environment:
