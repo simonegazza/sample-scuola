@@ -18,6 +18,8 @@ COPY nginx/default /home/nginx
 
 COPY dev_package /home/dev
 
+COPY pkg_dev.template.xml /home/pkg_dev.template.xml
+
 EXPOSE 80
 
 CMD ["/home/start.sh"]
