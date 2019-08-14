@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="1.0" method="upgrade">
+    <name>dev</name>
+    <author>Scuola Online Service Team</author>
+    <packagename>dev</packagename>
+    <version>1.0.0</version>
+    <description>Dev package</description>
+    <scriptfile>pkg_script.php</scriptfile>
+    <files folder="packages">{packages}
+    </files>
+</extension>
