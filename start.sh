@@ -29,7 +29,7 @@ packages=""
 for folder in /home/components/*; do
     if [[ -d "$folder" ]]; then
         component="$(basename -- ${folder})"
-        echo "recognized $component component"
+        echo "Recognized $component component"
         ln -s "/home/components/$component" "/home/dev/packages/com_$component"
         packages+="\n\<file type=\"component\" id=\"com_${component}\"\>com_${component}\<\/file\>"
     fi;
@@ -38,7 +38,7 @@ done
 for folder in /home/templates/*; do
     if [[ -d "$folder" ]]; then
         template="$(basename -- ${folder})"
-        echo "recognized $template template"
+        echo "Recognized $template template"
         ln -s "/home/templates/$template" "/home/dev/packages/tpl_$template"
         packages+="\n\<file type=\"template\" id=\"${template}\" client=\"site\"\>tpl_${template}\<\/file\>"
     fi;
