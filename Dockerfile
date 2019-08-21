@@ -2,7 +2,7 @@ FROM debian:stretch
 
 RUN apt-get update -y && \
 apt-get upgrade -y && \
-apt-get install -y nginx ca-certificates apt-transport-https wget gnupg mysql-client git
+apt-get install -y sudo unzip nginx ca-certificates apt-transport-https wget gnupg mysql-client git
 
 RUN wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - && \
     echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list && \

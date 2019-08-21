@@ -13,7 +13,7 @@ if ! [[ -f "/var/www/html/$SITE_NAME/configuration.php" ]]; then
       --disable-ssl \
       --mysql-login=root:$MYSQL_ROOT_PASSWORD \
       --mysql-host=$MYSQL_DB_HOST \
-      --mysql-database=$MYSQL_DB_NAME $SITE_NAME 2>/dev/null
+      --mysql-database=$MYSQL_DB_NAME $SITE_NAME
   rm /etc/nginx/sites-available/default
   cp /home/nginx /etc/nginx/sites-available/default
   sed -i -e "s/SITE_NAME/$SITE_NAME/g" /etc/nginx/sites-available/default
