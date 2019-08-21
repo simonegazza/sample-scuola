@@ -40,4 +40,7 @@ COPY pkg_dev.template.xml /home/pkg_dev.template.xml
 
 COPY start.sh /home/start.sh
 RUN chmod u+x /home/start.sh
+
+EXPOSE 80
+
 CMD ["/home/start.sh"]

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-while ! mysqladmin ping -h $MYSQL_DB_HOST -u root -p$MYSQL_ROOT_PASSWORD ; do
+until mysqladmin ping -h $MYSQL_DB_HOST -u root -p$MYSQL_ROOT_PASSWORD ; do
     sleep 3
 done
 
