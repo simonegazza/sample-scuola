@@ -14,6 +14,7 @@ services:
     - ./dev_package:/home/dev
     depends_on:
     - db
+    container_name: sample-scuola-web
     environment:
       SITE_NAME: ${SITE_NAME}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -26,6 +27,7 @@ services:
     restart: always
     hostname: ${MYSQL_DB_HOST}
     domainname: ${MYSQL_DB_HOST}
+    container_name: sample-scuola-db
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}

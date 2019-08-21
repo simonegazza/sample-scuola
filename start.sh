@@ -13,7 +13,7 @@ if ! [[ -f "/var/www/html/$SITE_NAME/configuration.php" ]]; then
       --disable-ssl \
       --mysql-login=root:$MYSQL_ROOT_PASSWORD \
       --mysql-host=$MYSQL_DB_HOST \
-      --mysql-database=$MYSQL_DB_NAME $SITE_NAME
+      --mysql-database=$MYSQL_DB_NAME $SITE_NAME 2>/dev/null
   rm /etc/nginx/sites-available/default
   cp /home/nginx /etc/nginx/sites-available/default
   sed -i -e "s/SITE_NAME/$SITE_NAME/g" /etc/nginx/sites-available/default
@@ -48,9 +48,13 @@ sed -i "/home/dev/pkg_dev.xml" -e "s/{packages}/${packages}/g" "/home/dev/pkg_de
 
 ln -s "/home/dev" "/var/www/html/$SITE_NAME/tmp/dev"
 
-chown -Rh www-data:www-data "/home/components"
+if [[ -d "/home/components" ]]; then
+    chown -Rh www-data:www-data "/home/components"
+fi
+if [[ -d "/home/templates" ]]; then
+    chown -Rh www-data:www-data "/home/templates"
+fi
 chown -Rh www-data:www-data "/home/dev"
-chown -Rh www-data:www-data "/home/templates"
 chown -Rh www-data:www-data "/var/www/html/$SITE_NAME"
 
 service php7.2-fpm start

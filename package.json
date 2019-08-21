@@ -1,0 +1,23 @@
+{
+  "name": "sample-scuola",
+  "version": "1.0.0",
+  "description": "sample-scuola per il development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scuola-Online-Service/sample-scuola.git"
+  },
+  "author": "Scuola-Online-Service",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Scuola-Online-Service/sample-scuola/issues"
+  },
+  "homepage": "https://github.com/Scuola-Online-Service/sample-scuola#readme",
+  "scripts": {
+    "start": "docker-compose up",
+    "stop": "docker-compose stop"
+  }
+}
