@@ -19,7 +19,7 @@ services:
       SITE_NAME: ${SITE_NAME}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DB_HOST: ${MYSQL_DB_HOST}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_DB_NAME: ${MYSQL_DB_NAME}
 
   db:
     image: mysql:5.7
@@ -30,5 +30,4 @@ services:
     container_name: sample-scuola-db
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
     tty: true
