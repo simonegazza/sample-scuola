@@ -1,12 +1,13 @@
-# INFO
-`docker-compose` per l'esecuzione dell'ambiente locale di *SOS*.  
-Lo stack comprende un container `data` per il codice e che si occuperà di montare i volumi necessari per la persistenza,
-`db`, `php`, `nginx`, `redis` al momento si spiegano da soli, `localstack` come fallback delle funzionalità di AWS.
-
+# Info
+`docker-compose` per l'esecuzione dell'ambiente locale di *SOS*.
+Lo stack comprende un container `web`, contenente `php7.2` ed `nginx`, e un `db` mysql.
 # Istruzioni
+- `cp .env.template .env` (ed eventuale modifica delle variabili d'ambiente)
+- nel file `docker-compose.yml` montare come volumi le cartelle del/dei componente/i da testare in `/home/<nome-componente>` (vedere ad esempio nel `docker-compose.yml` le righe `- ./src/component:/home/components/helloworld` o `- ./src/template:/home/components/joomlapure`)
+- avviare l'ambiente di sviluppo con `npm run start`
 
-- `cp .env.template .env` e modificare eventualmente le variabili d'ambiente
-- nel file `docker-compose.yml` montare come volumi le cartelle del/dei componente/i da testare in `/home/<nome-componente>`
-- copiare il file script.template.php dentro alla root del/dei componente/i (`cp script.template.php ./src/script.php`), inserire il nome del componente al posto
-di COMPONENT_NAME (es. `class com_helloworldInstallerScript`) e inserire `	<scriptfile>script.php</scriptfile>` nel manifest del componente.
-- avviare l'ambiente di sviluppo con `docker-compose up` 
+# Note
+Il container di sviluppo risponde a `localhost:8000`
+Le credenziali di amministratore (`localhost:8000/administrator`) dell'ambiente locale sono:
+- user: `admin`
+- password: `admin`
