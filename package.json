@@ -15,6 +15,7 @@
   "homepage": "https://github.com/scuolaonlineservice/sample-scuola#readme",
   "scripts": {
     "start": "docker-compose up",
-    "stop": "docker-compose stop"
+    "stop": "docker-compose stop",
+    "push": "push-to-dockerhub.sh"
   }
 }
