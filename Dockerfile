@@ -32,9 +32,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     mv composer.phar /usr/bin/composer && \
     chmod +x /usr/bin/composer
 
-RUN composer global require joomlatools/console --no-interaction && \
-    composer global require google/apiclient:"^2.0" && \
-    composer global require aws/aws-sdk-php
+RUN composer global require joomlatools/console --no-interaction
 
 COPY nginx/default /home/nginx
 COPY dev_package /home/dev

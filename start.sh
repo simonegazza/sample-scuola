@@ -56,6 +56,7 @@ if [[ -d "/home/templates" ]]; then
 fi
 chown -Rh www-data:www-data "/home/dev"
 chown -Rh www-data:www-data "/var/www/html/$SITE_NAME"
+cd /var/www/html/$SITE_NAME && composer require aws/aws-sdk-php google/apiclient:"^2.0" --ignore-platform-reqs
 
 service php7.2-fpm start
 service nginx start
